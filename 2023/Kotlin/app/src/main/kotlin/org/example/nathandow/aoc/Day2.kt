@@ -7,55 +7,29 @@ class Game(val id: Int, var red: Int = 0, var green: Int = 0, var blue: Int = 0)
 }
 
 class Day2 {
-    fun runPart1(inputFile: String, red: Int, green: Int, blue: Int): Int {
-        val games: MutableMap<Int, Game> = mutableMapOf()
-
-        val reader = File(inputFile).bufferedReader()
-        reader.forEachLine { line ->
-            val splitGameHands = line.split(":")
-
-            //id
-            val id = splitGameHands.first().split(" ").last().toInt()
-            val game = Game(id)
-
-            // hands
-            val trimmedHands = splitGameHands.last().trim()
-            trimmedHands.split("; ").forEach { hand ->
-                hand.split(", ").forEach { component ->
-                    val amountPair = component.split(" ")
-                    val amountVal = amountPair.first().toInt()
-
-                    when (amountPair.last()) {
-                        "red" -> game.red = max(amountVal, game.red)
-                        "green" -> game.green = max(amountVal, game.green)
-                        "blue" -> game.blue = max(amountVal, game.blue)
-                    }
-                }
-            }
-
-            games[game.id] = game
-        }
-
-        val possibleGames = games.values.filter { (it.red <= red && it.green <= green && it.blue <= blue) }
+    fun runPart1(file: String, r: Int = 0, g: Int = 0, b: Int = 0): Int {
+        val games = getMaxColorsPerGame(file, r, g, b)
+        val possibleGames = games.filter { (it.red <= r && it.green <= g && it.blue <= b) }
         val sum = possibleGames.fold(0) { sum, game -> sum + game.id }
         return sum
     }
 
+    fun runPart2(file: String, r: Int = 0, g: Int = 0, b: Int = 0): Int {
+        val games = getMaxColorsPerGame(file)
+        val sum = games.fold(0) { sum, game ->
+            sum + (game.red * game.green * game.blue)
+        }
+
+        return sum
+    }
+
     /*
-     * As an exercise
-     *  - lean more on map/reduce/filter.
-     *  - list instead of map where id was redundant.
-     * Possible improvements:
-     *  - Stronger error checking:
-     *      - Missing files
-     *      - Verify data after splits
-     *      - Verify number values are parsed to Int and bail
-     *      - Do we just ignore lines that don't conform and bail?
+     * Returns the max colors needed for each game.
      */
-    fun runPart1Lambda(inputFile: String, red: Int, green: Int, blue: Int): Int {
+    private fun getMaxColorsPerGame(file: String, r: Int = 0, g: Int = 0, b:Int = 0): MutableList<Game> {
         val games: MutableList<Game> = mutableListOf()
 
-        val reader = File(inputFile).bufferedReader()
+        val reader = File(file).bufferedReader()
         reader.readLines().map { line ->
             val splitByColon = line.split(":")
             val game = Game(splitByColon.first().split(" ").last().toInt(), 0, 0, 0)
@@ -74,9 +48,6 @@ class Day2 {
             games.add(game)
         }
 
-        val sum = games
-            .filter { (it.red <= red && it.green <= green && it.blue <= blue) }
-            .fold(0) { sum, game -> sum + game.id }
-        return sum
+        return games
     }
 }

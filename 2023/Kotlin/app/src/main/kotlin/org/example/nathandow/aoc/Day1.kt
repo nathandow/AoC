@@ -3,9 +3,6 @@ package org.example.nathandow.aoc
 import java.io.File
 
 class Day1 {
-    /*
-     * Note: This is valid for both part 1 & 2.
-     */
     fun run(inputFile: String) : Int {
         val inputStream = File(inputFile).inputStream()
         return inputStream

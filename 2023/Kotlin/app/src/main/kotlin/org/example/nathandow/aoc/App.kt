@@ -17,9 +17,9 @@ class App {
     private fun runDay1() {
         println("Day 1 - Trebuchet ?!")
         println("--------------------------------------------------------------------------------")
-        val filename = "inputs/day1/official_input.txt"
+        val file = "inputs/day1/official_input.txt"
         val day1 = Day1()
-        val out = day1.run(filename)
+        val out = day1.run(file)
         println("OUT: $out")
         println()
     }
@@ -27,13 +27,15 @@ class App {
     private fun runDay2() {
         println("Day 2 - Cube Conundrum")
         println("--------------------------------------------------------------------------------")
-        val filename = "inputs/day2/official_input.txt"
+        val file  = "inputs/day2/official_input.txt"
         val day2 = Day2()
 
         println("PART 1")
-        val out = day2.runPart1(filename, red = 12, green = 13, blue = 14)
-        val outLambda = day2.runPart1Lambda(filename, red = 12, green = 13, blue = 14)
-        println("OUT       : $out")
-        println("OUT LAMBDA: $outLambda")
+        val out = day2.runPart1(file, r = 12, g = 13, b = 14)
+        println("OUT: $out")
+
+        println("PART 2")
+        val out2 = day2.runPart2(file)
+        println("OUT2: $out2")
     }
 }
