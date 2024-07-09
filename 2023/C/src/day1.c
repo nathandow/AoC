@@ -4,9 +4,11 @@
 #include <ctype.h>
 #include "inc/days.h"
 
-int runDay1ByLine(FILE *fp);
-int runDay1ByFile(FILE *fp);
+int parseByLine(FILE *fp);
 int firstLast(const char *str);
+int getDigit(const char *str);
+int textToDigit(const char *buf);
+int startsWith(const char *pre, const char *str);
 
 int runDay1(const char *file) {
   FILE *fp = fopen(file, "r");
@@ -15,75 +17,65 @@ int runDay1(const char *file) {
     exit(1);
   }
 
-  int out = runDay1ByFile(fp);
-  fseek(fp, 0, SEEK_SET);
-  int out2 = runDay1ByLine(fp);
-
-  printf("FILE: %d\n", out);
-  printf("LINE: %d\n", out2);
+  int out = parseByLine(fp);
 
   fclose(fp);
   return out;
 }
 
-int runDay1ByLine(FILE *fp) {
-  int lines = 0;
+int parseByLine(FILE *fp) {
+  //int lines = 0;
   int out = 0;
   char buf[256];
 
-  while(fgets(buf, 256, fp) != NULL) {
+  while (fgets(buf, 256, fp) != NULL) {
     int fl = firstLast(buf);
-    //printf("%-4d [%2d]: %s", lines, fl, buf);
-    lines++;
     out += fl;
+    //printf("%4d: [%2d] %s", lines, fl, buf);
+    //lines++;
   }
 
   return out;
 }
 
-int runDay1ByFile(FILE *fp) {
-  int out = 0;
-  int c = 0; 
-  int s = 0;
-  int e = 0;
-  while ((c = fgetc(fp)) != EOF) {
-    if (c == '\n') {
-      if (s != 0 && e != 0) {
-        //printf(" <-- %d\n", s * 10 + e);
-        out += s * 10 + e;
-        s = 0;
-        e = 0;
-      } else {
-        //printf("\n");
-      }
-    } else if (isdigit(c)) {
-      //printf("\e[1m%c\e[m", c);
-      if (s == 0) { s = c - '0'; }
-      e = c - '0';
-    } else {
-      //printf("%c", c);
-    }
-  }
-
-  return out;
-}
-
-/*
- * returns an int from the first and last digit in the str.
- */
 int firstLast(const char *str) {
   if (str == NULL) { return 0; }
   unsigned long len = strlen(str);
   if (len <= 0) { return 0;}
   len = strlen(str) - 1;
+  int s = 0;
+  int e = 0;
 
-  int start = 0;
-  int end = 0;
-  for (int i = 0; i < len; i ++) {
-    if (start != 0 && end != 0) { break; }
-    if (start == 0 && isdigit(str[i]) != 0) { start = str[i] - '0'; }
-    if (end == 0 && isdigit(str[len - (i + 1)]) != 0) { end = str[len - (i + 1)] - '0'; }
+  for (int i = 0; i < len; i++) {
+    if (s != 0 && e != 0) { break; }
+    if (s == 0) { s = getDigit(&str[i]); }
+    if (e == 0) { e = getDigit(&str[len - (i + 1)]); }
   }
 
-  return (start * 10) + end;
+  return (s * 10) + e;
+}
+
+int getDigit(const char *str) {
+  if (isdigit(str[0]) != 0) {
+    return str[0] - '0';
+  } 
+
+  return textToDigit(str);
+}
+
+int textToDigit(const char *buf) {
+  if (startsWith("one", buf) == 0) { return 1; }
+  if (startsWith("two", buf) == 0) { return 2; }
+  if (startsWith("three", buf) == 0) { return 3; }
+  if (startsWith("four", buf) == 0) { return 4; }
+  if (startsWith("five", buf) == 0) { return 5; }
+  if (startsWith("six", buf) == 0) { return 6; }
+  if (startsWith("seven", buf) == 0) { return 7; }
+  if (startsWith("eight", buf) == 0) { return 8; }
+  if (startsWith("nine", buf) == 0) { return 9; }
+  return 0;
+}
+
+int startsWith(const char *pre, const char *str) {
+  return strncmp(pre, str, strlen(pre));
 }
