@@ -3,12 +3,12 @@
 #include <string.h>
 #include <ctype.h>
 #include "inc/days.h"
+#include "inc/util.h"
 
 int parseByLine(FILE *fp);
 int firstLast(const char *str);
-int getDigit(const char *str);
 int textToDigit(const char *buf);
-int startsWith(const char *pre, const char *str);
+int getDigit(const char *str);
 
 int runDay1(const char *file) {
   FILE *fp = fopen(file, "r");
@@ -24,15 +24,12 @@ int runDay1(const char *file) {
 }
 
 int parseByLine(FILE *fp) {
-  //int lines = 0;
   int out = 0;
   char buf[256];
 
   while (fgets(buf, 256, fp) != NULL) {
     int fl = firstLast(buf);
     out += fl;
-    //printf("%4d: [%2d] %s", lines, fl, buf);
-    //lines++;
   }
 
   return out;
@@ -55,14 +52,6 @@ int firstLast(const char *str) {
   return (s * 10) + e;
 }
 
-int getDigit(const char *str) {
-  if (isdigit(str[0]) != 0) {
-    return str[0] - '0';
-  } 
-
-  return textToDigit(str);
-}
-
 int textToDigit(const char *buf) {
   if (startsWith("one", buf) == 0) { return 1; }
   if (startsWith("two", buf) == 0) { return 2; }
@@ -76,6 +65,10 @@ int textToDigit(const char *buf) {
   return 0;
 }
 
-int startsWith(const char *pre, const char *str) {
-  return strncmp(pre, str, strlen(pre));
+int getDigit(const char *str) {
+  if (isdigit(str[0]) != 0) {
+    return str[0] - '0';
+  } 
+
+  return textToDigit(str);
 }
