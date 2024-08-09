@@ -20,7 +20,8 @@ int main(int argc, char *argv[]) {
   printf("--------------------------------------------------------------------------------\n");
   const char *file3 = "inputs/day3/official_input";
   printf("IN: %s\n", file3);
-  printf("OUT: %d\n", runDay3(file3));
+  printf("PART1 OUT: %d\n", runDay3Part1(file3));
+  //printf("PART2 OUT: %d\n", runDay3Part2(file3));
 
   exit(EXIT_SUCCESS);
 }
