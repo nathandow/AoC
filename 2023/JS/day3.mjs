@@ -9,11 +9,11 @@ function isSymbol(c) {
 }
 
 function extractNumber(str, i) {
-  var step = i;
+  let step = i;
   while (isDigit(str[step])) { ++step; }
-  var end = --step;
-  var num = 0;
-  var multiplier = 1;
+  let end = --step;
+  let num = 0;
+  let multiplier = 1;
   
   while (isDigit(str[step])) {
     num += str[step] * multiplier;
@@ -21,7 +21,7 @@ function extractNumber(str, i) {
     --step;
   }
 
-  var start = step + 1;
+  let start = step + 1;
 
   const number = {
     number: num,
@@ -36,26 +36,26 @@ function isPart(lines, row, start, end) {
   if (!lines[row]) { return false; }
 
   for (var i = start; i <= end; ++i) {
-    var n = null;
-    var nw = null;
-    var ne = null;
+    let n = null;
+    let nw = null;
+    let ne = null;
     if (lines[row - 1]) {
       n = lines[row - 1][i];
       nw = lines[row - 1][i - 1];
       ne = lines[row - 1][i + 1];
     }
 
-    var s = null;
-    var sw = null;
-    var se = null;
+    let s = null;
+    let sw = null;
+    let se = null;
     if (lines[row + 1]) {
       s = lines[row + 1][i];
       sw = lines[row + 1][i - 1];
       se = lines[row + 1][i + 1];
     }
     
-    var w = lines[row][i - 1];
-    var e = lines[row][i + 1];
+    let w = lines[row][i - 1];
+    let e = lines[row][i + 1];
 
     if (isSymbol(n) || isSymbol(nw) || isSymbol(ne) ||
         isSymbol(s) || isSymbol(sw) || isSymbol(se) ||
@@ -68,7 +68,7 @@ function isPart(lines, row, start, end) {
 }
 
 function day3(file) {
-  var data = null;
+  let data = null;
   try {
     data = fs.readFileSync(file, 'utf8');
   } catch (err) {
@@ -76,13 +76,13 @@ function day3(file) {
     return;
   }
 
-  var sum = 0;
+  let sum = 0;
 
   const lines = data.split('\n');
-  for (var i = 0; i < lines.length; ++i) {
+  for (let i = 0; i < lines.length; ++i) {
     const line = lines[i];
     console.log(`[${line}]`);
-    for (var j = 0; j < line.length; ++j) {
+    for (let j = 0; j < line.length; ++j) {
       if (isDigit(line.charAt(j))) {
         const xNum = extractNumber(line, j);
         const part = isPart(lines, i, xNum.start, xNum.end);

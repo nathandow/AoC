@@ -1,3 +1,4 @@
+'use strict'
 import * as fs from 'node:fs';
 
 const english_digit = {
@@ -29,7 +30,7 @@ function getAsDigit(str, offset) {
 }
 
 function day1(file) {
-  var data;
+  let data;
 
   try {
     data = fs.readFileSync(file, 'utf8');
@@ -38,27 +39,27 @@ function day1(file) {
     return;
   }
   
-  var sum = 0;
+  let sum = 0;
   const lines = data.split('\n');
   lines.forEach(line => {
-    var start = 0;
-    var end = 0;
-    for (var i = 0; i <= line.length; i++) {
+    let start = 0;
+    let end = 0;
+    for (let i = 0; i <= line.length; i++) {
       if (start != 0 && end != 0) {
-        var combined = start * 10 + end;
+        let combined = start * 10 + end;
         sum += combined;
         break;
       }
 
       if (start === 0) {
-        var start_digit = getAsDigit(line, i);
+        let start_digit = getAsDigit(line, i);
         if (start_digit !== null) {
           start = start_digit - '0';
         }
       }
 
       if (end === 0) {
-        var end_digit = getAsDigit(line, line.length - (i + 1));
+        let end_digit = getAsDigit(line, line.length - (i + 1));
         if (end_digit !== null) {
           end = end_digit - '0';
         }
@@ -71,5 +72,5 @@ function day1(file) {
 
 console.log('DAY 1');
 console.log('-------------------------------------------------------------');
-var out = day1('data/official_input_day1');
-console.log(`OUT: ${out}`);
+const out = day1('data/official_input_day1');
+console.log(`OUT: ${out2}`);

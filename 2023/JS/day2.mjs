@@ -1,3 +1,4 @@
+'use strict'
 import * as fs from 'node:fs';
 
 const english_digit = {
@@ -29,7 +30,7 @@ function getAsDigit(str, offset) {
 }
 
 function day2(file, r, g, b) {
-  var data;
+  let data;
   try {
     data = fs.readFileSync(file, 'utf8');
   } catch (err) {
@@ -37,7 +38,7 @@ function day2(file, r, g, b) {
     return;
   }
 
-  var sum = 0;
+  let sum = 0;
 
   const lines = data.split('\n');
   lines.forEach(line => {
@@ -49,7 +50,7 @@ function day2(file, r, g, b) {
     const game_id = parseInt(line_split[0].split(' ')[1]);
     const dice_field = line_split[1].split(/(?:,|;)+/);
    
-    var max = {
+    let max = {
       r: 0,
       g: 0,
       b: 0
@@ -71,7 +72,7 @@ function day2(file, r, g, b) {
 }
 
 function day2Part2(file) {
-  var data;
+  let data;
   try {
     data = fs.readFileSync(file, 'utf8');
   } catch (err) {
@@ -79,7 +80,7 @@ function day2Part2(file) {
     return;
   }
 
-  var sum = 0;
+  let sum = 0;
 
   const lines = data.split('\n');
   lines.forEach(line => {
@@ -91,7 +92,7 @@ function day2Part2(file) {
     const game_id = parseInt(line_split[0].split(' ')[1]);
     const dice_field = line_split[1].split(/(?:,|;)+/);
    
-    var max = {
+    let max = {
       r: 0,
       g: 0,
       b: 0
@@ -112,12 +113,11 @@ function day2Part2(file) {
 
 console.log('DAY 2');
 console.log('-------------------------------------------------------------');
-var out = day2('data/official_input_day2', 12, 13, 14);
-console.log(`OUT: ${out}`);
-console.log()
+const out1 = day2('data/official_input_day2', 12, 13, 14);
+console.log(`OUT: ${out1}`);
+console.log();
 
 console.log('DAY 2 - Part 2');
 console.log('-------------------------------------------------------------');
-var out = day2Part2('data/official_input_day2');
-console.log(`OUT: ${out}`);
-console.log();
+const out2 = day2Part2('data/official_input_day2');
+console.log(`OUT: ${out2}`);
