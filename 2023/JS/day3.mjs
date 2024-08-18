@@ -98,7 +98,49 @@ function day3(file) {
   return sum;
 }
 
+function walkNeighbours(lines, row, col) {
+  if (!lines[row - 1]) {
+    console.log('~~~');
+  } else {
+    console.log(`${lines[row - 1][col - 1]}${lines[row - 1][col]}${lines[row - 1][col + 1]}`);
+  }
+
+  console.log(`${lines[row][col-1]}${lines[row][col]}${lines[row][col + 1]}`);
+
+  if (!lines[row + 1]) {
+    console.log('~~~');
+  } else {
+    console.log(`${lines[row + 1][col - 1]}${lines[row + 1][col]}${lines[row + 1][col + 1]}`);
+  }
+
+
+}
+
+function testWalk(file) {
+  let data = null;
+  try {
+    data = fs.readFileSync(file, 'utf8');
+  } catch (err) {
+    console.log(`ERR: ${err}`);
+    return;
+  }
+
+  const lines = data.split('\n');
+  for (let row = 0; row < lines.length; ++row) {
+    for (let col = 0; col < lines[row].length; ++col) {
+      if (isSymbol(lines[row][col])) {
+        walkNeighbours(lines, row, col);
+        console.log();
+      }
+    }
+  }
+}
+
+testWalk('data/official_input_day3');
+
+/*
 // we are expecting: 535078
 console.log('DAY 3\n');
 const out = day3('data/official_input_day3');
 console.log(`OUT: ${out}`);
+*/

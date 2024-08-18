@@ -73,4 +73,4 @@ function day1(file) {
 console.log('DAY 1');
 console.log('-------------------------------------------------------------');
 const out = day1('data/official_input_day1');
-console.log(`OUT: ${out2}`);
+console.log(`OUT: ${out}`);

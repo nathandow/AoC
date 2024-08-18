@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES6",
+        "declaration": true,
+        "outDir": "./dist",
+        "strict": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "moduleResolution": "Node",
+        "allowImportingTsExtensions": false
+    }
+}
