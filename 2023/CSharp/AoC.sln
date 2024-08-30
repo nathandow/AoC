@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaterLib", "NaterLib\NaterLib.csproj", "{7FFB790D-E000-4940-9E20-36E2B17805C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AocConsole", "AocConsole\AocConsole.csproj", "{1FBA0FDD-DAD3-4895-9374-7E1854CE5F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AocTest", "AocTest\AocTest.csproj", "{58C8F14E-675D-4265-9A72-B3EA5A4A98FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FFB790D-E000-4940-9E20-36E2B17805C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFB790D-E000-4940-9E20-36E2B17805C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFB790D-E000-4940-9E20-36E2B17805C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFB790D-E000-4940-9E20-36E2B17805C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FBA0FDD-DAD3-4895-9374-7E1854CE5F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBA0FDD-DAD3-4895-9374-7E1854CE5F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBA0FDD-DAD3-4895-9374-7E1854CE5F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBA0FDD-DAD3-4895-9374-7E1854CE5F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58C8F14E-675D-4265-9A72-B3EA5A4A98FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58C8F14E-675D-4265-9A72-B3EA5A4A98FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58C8F14E-675D-4265-9A72-B3EA5A4A98FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58C8F14E-675D-4265-9A72-B3EA5A4A98FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
