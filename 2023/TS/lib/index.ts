@@ -311,6 +311,40 @@ function day3Part2(data: string): number {
   return sum;
 }
 
+function day4Part1(data: string): number {
+  let sum = 0;
+/*  
+  const lines = data.split('\n');
+  for (let l = 0; l <= lines.length; ++l) {
+    if (lines[l] && lines[l].length === 0) { continue; }
+
+    const split_line = lines[l].split(': ');
+    if (split_line.length !== 2) { continue; }
+
+    const hands = split_line[1].split(' | ');
+    if (hands.length !== 2) { continue; }
+
+    const elf_hand = hands[0].split(' ');
+    const player_hand = hands[1].split(' ');
+
+    let score = 0;
+    let increment = 1;
+    for (let i = 0; i < player_hand.length; ++i) {
+      for (let j = 0; j < elf_hand.length; ++j) {
+        if (player_hand[i] === elf_hand[i]) {
+          score += increment;
+          increment = increment * 2;
+        }
+      }
+    }
+
+    console.log(`${split_line[0]} ${score}`);
+    sum += score;
+  }
+*/
+  return sum;
+}
+
 const day1Data = readData('data/official_input_day1');
 console.log("DAY 1");
 console.log('Expecting: 55686');
@@ -351,6 +385,15 @@ console.log('Expecting: 75312571');
 console.log('--------------------------------------------------------------------------------');
 console.time('TIME: ');
 console.log(`OUT: ${day3Part2(day3Data)}`);
+console.timeEnd('TIME: ');
+console.log();
+
+const day4Data = readData('data/official_input_day4');
+console.log("DAY 4 - Part 1");
+console.log('Expecting: ???');
+console.log('--------------------------------------------------------------------------------');
+console.time('TIME: ');
+console.log(`OUT: ${day4Part1(day4Data)}`);
 console.timeEnd('TIME: ');
 console.log();
 
