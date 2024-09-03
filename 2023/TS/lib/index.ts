@@ -65,7 +65,7 @@ function readData(file: string): string {
 }
 
 function isSymbol(c: string) {
-  return c && c != '.' && !isNumber(c)
+  return c && c != '.' && c != '\r' && !isNumber(c)
 }
 
 function isGear(c: string) {
@@ -297,11 +297,13 @@ function day3Part2(data: string): number {
   let sum = 0;
   const lines = data.split('\n');
   for (let row = 0; row < lines.length; ++row) {
+    console.log(`${row}: ${lines[row]}`);
     if (lines[row].length === 0) { continue; }
     for (let col = 0; col < lines[row].length; ++col) {
       if (isGear(lines[row][col])) {
         const neighbours = walkNeighbours(lines, row, col);
         if (neighbours.length === 2) {
+          console.log(`\t${neighbours[0].number} ${neighbours[1].number}`);
           sum += neighbours[0].number * neighbours[1].number;
         }
       }

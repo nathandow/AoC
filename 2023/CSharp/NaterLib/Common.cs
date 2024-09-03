@@ -1,6 +1,4 @@
 ﻿using System.Collections.Immutable;
-using Microsoft.VisualBasic;
-
 namespace NaterLib;
 
 public class Common
