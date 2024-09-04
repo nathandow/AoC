@@ -22,7 +22,7 @@ public class Day3
         if (!char.IsAsciiDigit(str[pos])) { return new PartNumber(0, pos, pos); }
 
         int step = pos;
-        while (char.IsAsciiDigit(str[step])) { ++step; }
+        while (step < str.Length && char.IsAsciiDigit(str[step])) { ++step; }
         int end = --step;
         int num = 0;
         int multiplier = 1;
