@@ -30,6 +30,19 @@ int AoC::Day3::part1(std::ifstream &is) {
   return sum;
 }
 
+int AoC::Day3::part2(std::ifstream &is) {
+  int sum = 0;
+
+  auto lines = AoC::Util::getLines(is);
+  for (int row = 0; row < lines->size(); ++row) {
+    std::string const &line = lines->at(row);
+    for (int col = 0; col < line.length(); ++col) {
+    }
+  }
+
+  return sum;
+}
+
 bool AoC::Day3::isPart(std::unique_ptr<std::vector<std::string>> &lines, int row, int start, int end) {
   for (int i = start; i <= end; ++i) {
     if (row > 0) {

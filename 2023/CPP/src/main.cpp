@@ -50,5 +50,14 @@ int main(int argc, const char *argv[]) {
     std::cout << "Out: " << day3_part1_out << '\n';
     std::cout << '\n';
     
+    std::cout << "Day3 - Part2" << '\n';
+    std::cout << "------------------------------------------------------------" << '\n';
+    std::cout << "Expecting: ????" << '\n';
+    day3_is.clear();
+    day3_is.seekg(std::ios::beg);
+    int day3_part2_out = AoC::Day3::part2(day3_is);
+    std::cout << "Out: " << day3_part2_out << '\n';
+    std::cout << '\n';
+    
     return EXIT_SUCCESS;
 }
