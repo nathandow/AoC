@@ -6,12 +6,6 @@
 
 namespace AoC {
 
-typedef struct _PartNumber {
-    int number;
-    int start;
-    int end;
-} PartNumber;
-
 class Day1 {
 public:
     static long part1(std::ifstream &is);

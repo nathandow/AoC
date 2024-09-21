@@ -16,9 +16,16 @@ std::unique_ptr<std::vector<std::string>> AoC::Util::getLines(std::ifstream &is)
     return lines;
 }
 
-int AoC::Util::getNumber(std::string const &str, int pos, int &out) {
+int AoC::Util::getNumber(std::string const &str, size_t pos, int &out) {
     int n = pos;
     while (std::isdigit(str[n])) { ++n; }
     out = std::stoi(str.substr(pos, n - pos));
     return n;
 }
+
+
+int AoC::cantor(int a, int b) {
+  return (a + b + 1) * (a + b) / 2 + b;
+}
+
+
