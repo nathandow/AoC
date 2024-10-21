@@ -15,3 +15,6 @@ build
 # Ignore jdtls generated files
 .project
 .settings
+
+# misc
+.DS_Store

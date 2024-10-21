@@ -95,6 +95,10 @@ public class Day3 {
         return sum;
     }
 
+    /* TODO: Remove this tedium
+     * We have to do lot's of bounds checks head for all 8 adjacent positions.
+     * Can't we just just catch and ignore any out of bounds exception that might occur instead?
+     */
     private static List<PositionalNumber> getAdjacentUniqueNumbers(List<String> lines, int gearY, int gearX) {
         List<PositionalNumber> numbers = new ArrayList<>();
         if (lines.size() == 0 || gearY < 0  || gearX < 0 || gearY >= lines.size()) { return numbers; }
