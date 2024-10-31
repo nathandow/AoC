@@ -37,12 +37,12 @@ int runDay3Part1(const char *file) {
     } else {
       if (digits > 0) {
         if(isPart(buf, i - digits, digits, line)) {
-          printf("\e[1;33m%d\e[m", num);
+          //printf("\e[1;33m%d\e[m", num);
           out += num;
 
           // TODO: If gear record this associated number.
         } else {
-          printf("\e[1;m%d\e[m", num);
+          //printf("\e[1;m%d\e[m", num);
         }
 
         num = 0;
@@ -51,12 +51,12 @@ int runDay3Part1(const char *file) {
       
       if (isSymbol(c)) {
         if (isGear(c)) {
-          printf("\e[1;31m%c\e[m", c);
+          //printf("\e[1;31m%c\e[m", c);
         } else {
-          printf("\e[1;32m%c\e[m", c);
+          //printf("\e[1;32m%c\e[m", c);
         }
       } else {
-        printf("%c", c);
+        //printf("%c", c);
       }
     }
 
@@ -84,7 +84,7 @@ int runDay3Part2(const char *file) {
   int out = 0;
   for (int i = 0; i < SIZE; i++) {
     char c = buf[i];
-    printf("%c", c);
+    //printf("%c", c);
   }
 
   fclose(fp);

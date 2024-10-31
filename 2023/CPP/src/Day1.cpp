@@ -1,3 +1,4 @@
+#include <cctype>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -28,7 +29,7 @@ long AoC::Day1::part1(std::ifstream &is) {
 }
 
 long AoC::Day1::getAsNumber(std::string const &str, int i) {
-    if (isnumber(str[i])) { return str[i] - '0'; }
+    if (isdigit(str[i])) { return str[i] - '0'; }
     
     for (auto kv : Day1::englishToNumber) {
         if (str.substr(i, kv.first.length()) == kv.first) { return kv.second;}
