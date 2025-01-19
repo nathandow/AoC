@@ -1,0 +1,22 @@
+body {
+  background-color: #333333;
+  color: #FFFFFF;
+  font-family: monospace;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-header {
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+}
+
+.day-output {
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+}

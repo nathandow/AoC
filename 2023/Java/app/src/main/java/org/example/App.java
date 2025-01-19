@@ -41,11 +41,20 @@ public class App {
         System.out.println();
 
         // Day3, Part2
-        System.out.println("TODO: Day3, Part2: Gear Ratios");
+        System.out.println("Day3, Part2: Gear Ratios");
         start = System.nanoTime();
         int d3p2_out = Day3.part2("./data/official_input_day3");
         System.out.println("Expected: 75312571");
         System.out.printf("Actual: %d\n", d3p2_out);
+        System.out.printf("Elapsed: %dms\n", (System.nanoTime() - start) / NS_PER_MS);
+        System.out.println();
+ 
+        // Day4, Part1
+        System.out.println("Day4, Part1: Scratchcards");
+        start = System.nanoTime();
+        int d4p1_out = Day4.part1("./data/official_input_day4");
+        System.out.println("Expected: TODO");
+        System.out.printf("Actual: %d\n", d4p1_out);
         System.out.printf("Elapsed: %dms\n", (System.nanoTime() - start) / NS_PER_MS);
         System.out.println();
     }

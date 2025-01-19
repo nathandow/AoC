@@ -1,3 +1,0 @@
-This line has no digits
-A line with 1 digits 2
-and another 8

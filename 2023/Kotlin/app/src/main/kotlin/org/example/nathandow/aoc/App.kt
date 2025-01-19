@@ -1,41 +1,40 @@
 package org.example.nathandow.aoc
+const val NS_PER_MS = 1000000
 
 fun main() {
-    val app = App()
-    println("${app.greeting}\n")
-    app.runAll()
-}
+    // Day1, Part1
+    println("Day 1, Part 1 - Trebuchet ?!")
+    var start = System.nanoTime()
+    val d1p1Out = Day1.part1("app/data/official_input_day1")
+    println("Expected: 55686")
+    println("Actual: $d1p1Out")
+    println("Elapsed: ${(System.nanoTime() - start) / NS_PER_MS} ms")
+    println()
 
-class App {
-    val greeting = "Advent of Code 2023"
+    // Day2, Part1
+    println("Day 1, Part 1 - Trebuchet ?!")
+    start = System.nanoTime()
+    val d2p1Out = Day2.part1("app/data/official_input_day2", 12, 13, 14)
+    println("Expected: 2632")
+    println("Actual: $d2p1Out")
+    println("Elapsed: ${(System.nanoTime() - start) / NS_PER_MS} ms")
+    println()
 
-    fun runAll() {
-        runDay1()
-        runDay2()
-    }
+    // Day2, Part2
+    println("Day 2, Part 2 - Trebuchet ?!")
+    start = System.nanoTime()
+    val d2p2Out = Day2.part2("app/data/official_input_day2")
+    println("Expected: 69629")
+    println("Actual: $d2p2Out")
+    println("Elapsed: ${(System.nanoTime() - start) / NS_PER_MS} ms")
+    println()
 
-    private fun runDay1() {
-        println("Day 1 - Trebuchet ?!")
-        println("--------------------------------------------------------------------------------")
-        val file = "inputs/day1/official_input.txt"
-        val day1 = Day1()
-        val out = day1.run(file)
-        println("OUT: $out")
-        println()
-    }
-
-    private fun runDay2() {
-        println("Day 2 - Cube Conundrum")
-        println("--------------------------------------------------------------------------------")
-        val file  = "inputs/day2/official_input.txt"
-        val day2 = Day2()
-
-        println("PART 1")
-        val out = day2.runPart1(file, r = 12, g = 13, b = 14)
-        println("OUT: $out")
-
-        println("PART 2")
-        val out2 = day2.runPart2(file)
-        println("OUT2: $out2")
-    }
+    // Day3, Part1
+    println("Day 3, Part 1 - Gear Ratios")
+    start = System.nanoTime()
+    val d3p1Out = Day3.part1("app/data/official_input_day3")
+    println("Expected: 535078")
+    println("Actual: $d3p1Out")
+    println("Elapsed: ${(System.nanoTime() - start) / NS_PER_MS} ms")
+    println()
 }
