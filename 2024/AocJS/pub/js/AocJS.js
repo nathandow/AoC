@@ -125,6 +125,122 @@ var AocJS = {
     })
   },
 
+  // answer: 192767529
+  day3part1: function() {
+    this.clearElementById('day3part1-runtime')
+    this.clearElementById('day3part1-out')
+    const start = performance.now()
+    var sum = 0
+
+    fetch('text/day3')
+    .then(r => r.text())
+    .then(t => {
+      var regex = /mul\((\d{1,3}),(\d{1,3})\)/g
+      var matches = t.matchAll(regex) 
+      for (match of matches) {
+        sum += parseInt(match[1]) * parseInt(match[2])
+      }
+
+      this.outputLine('day3part1-out', `Result: ${sum}`)
+      const end = performance.now()
+      const runtimeElem = document.getElementById('day3part1-runtime')
+      runtimeElem.innerText = (end - start).toFixed(2)
+    })
+  },
+  
+  // answer: 104083373
+  day3part2: function() {
+    this.clearElementById('day3part2-runtime')
+    this.clearElementById('day3part2-out')
+    const start = performance.now()
+    var sum = 0
+
+    fetch('text/day3')
+    .then(r => r.text())
+    .then(t => {
+      var nextDont = 0
+      var nextDo = 0
+      while(true) {
+        nextDont = t.indexOf('don\'t()', nextDo)
+        if (nextDont === -1) nextDont = t.length - 1
+        const substr = t.substring(nextDo, nextDont)
+        const regex = /mul\((\d{1,3}),(\d{1,3})\)/g
+        const matches = substr.matchAll(regex) 
+        for (var match of matches) {
+          sum += parseInt(match[1]) * parseInt(match[2])
+        }
+
+        nextDo = t.indexOf('do()', nextDont)
+        if (nextDo === -1) break
+        if (nextDont === t.length - 1) break
+      }
+
+      this.outputLine('day3part2-out', `Result: ${sum}`)
+      const end = performance.now()
+      const runtimeElem = document.getElementById('day3part2-runtime')
+      runtimeElem.innerText = (end - start).toFixed(2)
+    })
+  },
+
+  // answer: 2297
+  day4part1: function() {
+    this.clearElementById('day4part1-runtime')
+    this.clearElementById('day4part1-out')
+    const start = performance.now()
+    var count = 0
+
+    fetch('text/day4')
+      .then(r => r.text())
+      .then(t => {
+      
+      for (var y = 0; y < 140; ++y) {
+        for (var x = 0; x < 141; ++x) {
+          if (y >= 3 && this.isXMAS(t, (y * 141) + x, 0, -1)) { ++count }                    // up
+          if (y >= 3 && x >= 3 && this.isXMAS(t, (y * 141) + x, -1, -1)) { ++count }         // up left
+          if (y >= 3 && x <= 137 && this.isXMAS(t, (y * 141) + x, 1, -1)) { ++count }        // up right
+          if (x >= 3 && this.isXMAS(t, (y * 141) + x, -1, 0)) { ++count }                    // left
+          if (x <= 137 && this.isXMAS(t, (y * 141) + x, 1, 0)) { ++count }                   // right
+          if (y <= (140 - 4) && this.isXMAS(t, (y * 141) + x, 0, 1)) { ++count }             // down
+          if (y <= (140 - 4) && x >= 3 && this.isXMAS(t, (y * 141) + x, -1, 1)) { ++count }  // down left
+          if (y <= (140 - 4) && x <= 137 && this.isXMAS(t, (y * 141) + x, 1, 1)) { ++count } // down right
+        }
+      }
+
+      this.outputLine('day4part1-out', `Result: ${count}`)
+      const end = performance.now()
+      const runtimeElem = document.getElementById('day4part1-runtime')
+      runtimeElem.innerText = (end - start).toFixed(2)
+    })
+  },
+
+  day4part2: function() {
+    this.clearElementById('day4part2-runtime')
+    this.clearElementById('day4part2-out')
+    const start = performance.now()
+
+    fetch('text/day4')
+      .then(r => r.text())
+      .then(t => {
+        this.outputLine('day4part2-out', `Result: TODO`)
+        const end = performance.now()
+        const runtimeElem = document.getElementById('day4part2-runtime')
+        runtimeElem.innerText = (end - start).toFixed(2)
+      })
+  },
+
+  isXMAS: function(str, index, xDir, yDir) {
+    var xmasArray = ['X', 'M', 'A', 'S']
+    var arr = [] 
+    
+    arr[0] = str[index]
+    arr[1] = str[index + (yDir * 141) + xDir]
+    arr[2] = str[index + ((yDir * 2) * 141) + (xDir * 2)]
+    arr[3] = str[index + ((yDir * 3) * 141) + (xDir * 3)]
+
+    var result = arr.length === xmasArray.length && arr.every((value, index) => value === xmasArray[index]) 
+    return result
+  },
+
   isReportSafe: function(report) {
     if (report === undefined || report.length < 2) return false
     const inc = report[0] < report[1]
